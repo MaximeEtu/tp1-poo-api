@@ -1,28 +1,19 @@
 package com.ensim.info.TP1;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class Tp1Application {
 
+	private static Zoo zoo;
+
+
 	public static void main(String[] args) throws LimiteVisiteurException {
-		//		SpringApplication.run(Tp1Application.class, args);
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-config.xml");
+//		SpringApplication.run(Tp1Application.class, args);
 
-
-		IZooService zooService = (IZooService) context.getBean("ZooService");
-
-		System.out.println("Hello welcome in my zoo");
-		for (int i = 0; i < 5; i++) {
-			zooService.nouveauVisiteur();
-		}
-
-		System.out.println(zooService.getVisiteurs());
+		zoo = new Zoo(15);
+		zoo.nouveauVisiteur();
 	}
+
 }
-
-
